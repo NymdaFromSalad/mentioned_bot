@@ -28,17 +28,18 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-3. Set your bot token environment variable
+3. Configure environment
 
-- Windows PowerShell:
-```powershell
-$env:TELEGRAM_BOT_TOKEN = "123456:ABC-Your-Bot-Token"
-```
+- Option A: use a `.env` file (recommended)
+  - Copy `.env.example` to `.env` and fill in values
+  - `TELEGRAM_BOT_TOKEN=123456:ABC-Your-Bot-Token`
+  - `MENTION_BOT_DB=mentions.sqlite3` (optional)
 
-4. (Optional) set a custom DB path
-```powershell
-$env:MENTION_BOT_DB = "d:\\Python\\mentionbot\\mentions.sqlite3"
-```
+- Option B: set environment variables directly (Windows PowerShell):
+  ```powershell
+  $env:TELEGRAM_BOT_TOKEN = "123456:ABC-Your-Bot-Token"
+  $env:MENTION_BOT_DB = "d:\\Python\\mentionbot\\mentions.sqlite3"  # optional
+  ```
 
 ## Run
 
@@ -53,3 +54,17 @@ Invite the bot to your group or supergroup, grant it permission to read messages
 - Only counts mentions in group/supergroup chats.
 - Usernames are normalized to lowercase for uniqueness; display name is preserved.
 - The leaderboard is limited to top 50 for readability.
+
+## Project structure
+
+```
+mentionbot/
+  __init__.py
+  config.py        # loads settings from .env/env
+  db.py            # sqlite storage and queries
+  handlers.py      # bot command and message handlers
+main.py            # entrypoint
+requirements.txt
+.env.example
+README.md
+```
