@@ -118,7 +118,7 @@ def register_handlers(application: Application) -> None:
 
 def default_commands() -> list[BotCommand]:
     return [
-        BotCommand("start", "Запустить бота"),
-        BotCommand("help", "Помощь"),
+        BotCommand("start", "Помощь"),
+        #BotCommand("help", "Помощь"),
         BotCommand("stats", "Статистика упоминаний"),
     ]

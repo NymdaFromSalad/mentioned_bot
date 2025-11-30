@@ -11,7 +11,7 @@ from mentionbot.handlers import register_handlers, default_commands
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    level=logging.INFO,
+    level=logging.WARN,
 )
 logger = logging.getLogger(__name__)
 
@@ -38,7 +38,7 @@ def main() -> None:
 
     register_handlers(application)
 
-    logger.info("Bot starting...")
+    logger.critical("Bot starting...")
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
